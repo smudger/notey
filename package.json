@@ -1,0 +1,30 @@
+{
+  "name": "offline-first-notes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@tiptap/starter-kit": "2.0.0-beta.183",
+    "@tiptap/vue-3": "2.0.0-beta.90",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "register-service-worker": "^1.7.2",
+    "tailwindcss": "^3",
+    "vue": "^3.2.13"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.2",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "vue-cli-plugin-tailwind": "~3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
