@@ -6,7 +6,7 @@
           <a @click.prevent="showAllNotes" href="#" class="ml-2 leading-none font-medium text-sm">All Notes</a>
         </div>
 
-        <button @click="addNewNote" class="flex items-center justify-center h-6 w-6 ml-1 rounded hover:bg-gray-300">
+        <button @click="store.addNewNote()" class="flex items-center justify-center h-6 w-6 ml-1 rounded hover:bg-gray-300">
           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
           </svg>
@@ -14,7 +14,7 @@
       </div>
 
       <div class="mt-4">
-        <a v-for="note in notes" :key="note.created" href="#" @click.prevent="openNote(note)" class="flex items-center h-8 text-sm pl-8 pr-3">
+        <a v-for="note in notes" :key="note.created" href="#" @click.prevent="store.openNote(note)" class="flex items-center h-8 text-sm pl-8 pr-3">
           <span class="ml-2 leading-none">{{ new Date(note.created).toLocaleString() }}</span>
         </a>
       </div>
@@ -23,23 +23,14 @@
 </template>
 
 <script setup>
-import {useStore} from "vuex";
 import {computed} from "vue";
+import {useNoteyStore} from "@/stores/notey";
 
-const store = useStore();
-const notes = computed(() => store.state.notes);
-
-let openNote = (note) => {
-  store.state.editor.commands.setContent(note.content);
-  store.commit('updateActiveNote', note);
-};
+const store = useNoteyStore();
+const notes = computed(() => store.notes);
 
 let showAllNotes = () => {
-  store.state.editor.commands.clearContent();
-  store.commit('updateActiveNote', {});
-};
-
-let addNewNote = () => {
-  store.dispatch('addNewNote');
+  store.editor.commands.clearContent();
+  store.activeNote = {};
 };
 </script>
