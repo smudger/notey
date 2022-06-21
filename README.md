@@ -1,4 +1,4 @@
-# offline-first-notes
+# Notey
 
 ## Project setup
 ```
