@@ -19,8 +19,8 @@
 
 <script setup>
 import {computed} from "vue";
-import {useStore} from "vuex";
+import {useNoteyStore} from "@/stores/notey";
 
-const store = useStore();
-const notes = computed(() => store.state.notes);
+const store = useNoteyStore();
+const notes = computed(() => store.notes);
 </script>

@@ -18,19 +18,19 @@ import { onMounted } from "vue";
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
 import Notes from './components/Notes';
-import {useStore} from "vuex";
 import {computed} from "vue";
+import {useNoteyStore} from "@/stores/notey";
 
-const store = useStore();
-const activeNote = computed(() => store.state.activeNote);
-const isOffline = computed(() => store.state.isOffline);
+const store = useNoteyStore();
+const activeNote = computed(() => store.activeNote);
+const isOffline = computed(() => store.isOffline);
 
 onMounted(() => {
   window.addEventListener('offline', () => {
-    store.commit('updateIsOffline', true);
+    store.isOffline = true;
   })
   window.addEventListener('online', () => {
-    store.commit('updateIsOffline', false);
+    store.isOffline = false;
 
     // sync their data with an external API
   })

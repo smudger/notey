@@ -5,7 +5,7 @@
     </div>
 
     <div class="h-16 bg-gray-100 border-t border-gray-300 text-right">
-      <button @click="store.dispatch('saveNote')" class="bg-none border border-gray-900 rounded py-1 px-4 mr-4 mt-3 hover:bg-gray-900 hover:text-white">
+      <button @click="store.saveNote()" class="bg-none border border-gray-900 rounded py-1 px-4 mr-4 mt-3 hover:bg-gray-900 hover:text-white">
         Save Note
       </button>
     </div>
@@ -13,16 +13,16 @@
 </template>
 
 <script setup>
-import { EditorContent, Editor } from '@tiptap/vue-3'
+import {Editor, EditorContent} from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import {computed, onBeforeUnmount, onMounted} from "vue";
-import { useStore } from "vuex";
+import {useNoteyStore} from "@/stores/notey";
 
-const store = useStore();
-const editor = computed(() => store.state.editor);
+const store = useNoteyStore();
+const editor = computed(() => store.editor);
 
 onMounted(() => {
-  const editor = new Editor({
+  store.editor = new Editor({
     content: '',
     extensions: [
       StarterKit
@@ -33,11 +33,9 @@ onMounted(() => {
       }
     }
   });
-
-  store.commit('updateEditor', editor);
 });
 
 onBeforeUnmount(() => {
-  store.dispatch('destroyEditor');
+  store.destroyEditor();
 });
 </script>
