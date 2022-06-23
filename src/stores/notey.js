@@ -97,6 +97,7 @@ export const useNoteyStore = defineStore("notey", {
     openNote(note) {
       this.editor.commands.setContent(note.content);
       this.activeNote = note;
+      this.editor.commands.focus("start");
     },
 
     destroyEditor() {
