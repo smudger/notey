@@ -19,7 +19,7 @@ export const useNoteyStore = defineStore("notey", {
       return new Promise((resolve, reject) => {
         let db = window.indexedDB.open("notes");
 
-        db.onerror = (e) => {
+        db.onerror = () => {
           reject("Error opening the database.");
         };
 
@@ -52,7 +52,7 @@ export const useNoteyStore = defineStore("notey", {
         .objectStore("notes");
       let noteRequest = noteStore.get(this.activeNote.created);
 
-      noteRequest.onerror = (e) => {
+      noteRequest.onerror = () => {
         console.error("Error saving the note in the database.");
       };
 
@@ -62,11 +62,11 @@ export const useNoteyStore = defineStore("notey", {
 
         let updateRequest = noteStore.put(note);
 
-        updateRequest.onerror = (e) => {
+        updateRequest.onerror = () => {
           console.error("Error storing the updated note in the database.");
         };
 
-        updateRequest.onsuccess = (e) => {
+        updateRequest.onsuccess = () => {
           let notes = this.notes;
           let noteIndex = notes.findIndex((n) => n.created === note.created);
           notes[noteIndex] = note;
