@@ -5,21 +5,23 @@
         <div class="flex px-4 pt-3 pb-4">
           <div class="prose my-2 mx-auto">
             <div class="text-center">
-              <span class="ml-1 text-xs text-gray-500">Created on {{ new Date(note.created).toLocaleString() }}</span>
+              <span class="ml-1 text-xs text-gray-500"
+                >Created on {{ new Date(note.created).toLocaleString() }}</span
+              >
             </div>
 
             <div v-html="note.content"></div>
           </div>
         </div>
-        <hr class="w-full">
+        <hr class="w-full" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {computed} from "vue";
-import {useNoteyStore} from "@/stores/notey";
+import { computed } from "vue";
+import { useNoteyStore } from "@/stores/notey";
 
 const store = useNoteyStore();
 const notes = computed(() => store.notes);

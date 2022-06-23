@@ -3,25 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@tiptap/starter-kit": "2.0.0-beta.183",
     "@tiptap/vue-3": "2.0.0-beta.90",
+    "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10",
     "pinia": "^2.0.14",
     "postcss": "^8",
     "register-service-worker": "^1.7.2",
     "tailwindcss": "^3",
+    "vite": "^2.9.12",
     "vue": "^3.2.13"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
-    "@vue/cli-plugin-pwa": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "eslint": "8",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "8",
     "prettier": "^2.7.1",
-    "vue-cli-plugin-tailwind": "~3.0.0"
+    "vite-plugin-eslint": "^1.6.1",
+    "vite-plugin-pwa": "^0.12.0"
   },
   "browserslist": [
     "> 1%",
