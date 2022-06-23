@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col flex-grow">
     <div class="flex flex-col flex-grow overflow-auto">
-      <editor-content :editor="editor" />
+      <editor-content class="flex h-full" :editor="editor" />
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ onMounted(() => {
     extensions: [StarterKit],
     editorProps: {
       attributes: {
-        class: "prose my-6 mx-auto focus:outline-none",
+        class: "flex-1 prose py-6 mx-auto focus:outline-none",
       },
     },
   });
